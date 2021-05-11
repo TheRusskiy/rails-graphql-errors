@@ -11,7 +11,12 @@
     "target": "es5",
     "jsx": "react",
     "noEmit": true,
-    "baseUrl": "."
+    "baseUrl": ".",
+    "paths": {
+      "components/*": ["app/javascript/components/*"],
+      "containers/*": ["app/javascript/containers/*"],
+      "lib/*": ["app/javascript/lib/*"]
+    }
   },
   "exclude": [
     "**/*.spec.ts",

@@ -1,13 +1,12 @@
 class GraphqlController < ApplicationController
   skip_before_action :verify_authenticity_token
-  exclude_xsrf_token_cookie
 
   def execute
     variables = ensure_hash(params[:variables])
     query = params[:query]
     operation_name = params[:operationName]
     context = {}
-    result = with_cache(context, operation_name, query, variables)
+    result = RailsGraphqlErrorsSchema.execute(query, variables: variables, context: context, operation_name: operation_name)
     render json: result
   rescue => e
     raise e unless Rails.env.development?
