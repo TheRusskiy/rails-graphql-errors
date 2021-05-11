@@ -1,6 +1,10 @@
 {
   "name": "rails-graphql-errors",
-  "private": true,
+  "private": false,
+  "license": "MIT",
+  "scripts": {
+    "format": "prettier --write 'app/javascript/**/*.{js,jsx,ts,tsx}'"
+  },
   "dependencies": {
     "@apollo/client": "^3.3.16",
     "@babel/preset-react": "^7.13.13",
@@ -22,6 +26,7 @@
   },
   "version": "0.1.0",
   "devDependencies": {
+    "prettier": "^2.3.0",
     "webpack-dev-server": "^3.11.2"
   }
 }

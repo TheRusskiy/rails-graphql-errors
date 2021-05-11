@@ -1,10 +1,10 @@
 import React from 'react'
 
-import { Form, Field  } from 'react-final-form'
-import FormSubmitError from "components/FormSubmitError"
-import TextField from "components/TextField";
-import {useApolloClient, gql} from "@apollo/client";
-import getMutationErrors from "lib/getMutationErrors";
+import { Form, Field } from 'react-final-form'
+import FormSubmitError from 'components/FormSubmitError'
+import TextField from 'components/TextField'
+import { useApolloClient, gql } from '@apollo/client'
+import getMutationErrors from 'lib/getMutationErrors'
 
 type FormValues = {
   name: string
@@ -14,8 +14,18 @@ type FormValues = {
 }
 
 const MUTATION = gql`
-  mutation UserSignup($name: String!, $email: String!, $password: String!, $passwordConfirmation: String!) {
-    userSignup(name: $name, email: $email, password: $password, passwordConfirmation: $passwordConfirmation) {
+  mutation UserSignup(
+    $name: String!
+    $email: String!
+    $password: String!
+    $passwordConfirmation: String!
+  ) {
+    userSignup(
+      name: $name
+      email: $email
+      password: $password
+      passwordConfirmation: $passwordConfirmation
+    ) {
       user {
         id
       }
@@ -43,10 +53,7 @@ export default function SignupForm() {
   const client = useApolloClient()
 
   const onSubmit = async (values: FormValues) => {
-    const response = await client.mutate<
-      UserSignup,
-      FormValues
-      >({
+    const response = await client.mutate<UserSignup, FormValues>({
       mutation: MUTATION,
       variables: values
     })
@@ -60,7 +67,12 @@ export default function SignupForm() {
 
   return (
     <Form<FormValues>
-      initialValues={{ name: '', email: '', password: '', passwordConfirmation: ''}}
+      initialValues={{
+        name: '',
+        email: '',
+        password: '',
+        passwordConfirmation: ''
+      }}
       onSubmit={onSubmit}
     >
       {({ handleSubmit, submitting }) => (
@@ -68,31 +80,17 @@ export default function SignupForm() {
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <h1>User Sign Up</h1>
             <label>
-              Name:{" "}
-              <Field
-                name="name"
-                component={TextField}
-                type="text"
-              />
+              Name: <Field name="name" component={TextField} type="text" />
             </label>
             <label>
-              Email:{" "}
-              <Field
-                name="email"
-                component={TextField}
-                type="email"
-              />
+              Email: <Field name="email" component={TextField} type="email" />
             </label>
             <label>
-              Password:{" "}
-              <Field
-                name="password"
-                component={TextField}
-                type="password"
-              />
+              Password:{' '}
+              <Field name="password" component={TextField} type="password" />
             </label>
             <label>
-              Password Confirmation:{" "}
+              Password Confirmation:{' '}
               <Field
                 name="passwordConfirmation"
                 component={TextField}

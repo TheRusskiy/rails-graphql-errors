@@ -5,10 +5,8 @@ const FormSubmitError = () => {
   return (
     <FormSpy subscription={{ submitError: true, error: true }}>
       {({ submitError, error }) =>
-        (submitError ?? error) ? (
-          <div style={{ color: 'red' }}>
-            Error: { submitError ?? error }
-          </div>
+        submitError ?? error ? (
+          <div style={{ color: 'red' }}>Error: {submitError ?? error}</div>
         ) : null
       }
     </FormSpy>

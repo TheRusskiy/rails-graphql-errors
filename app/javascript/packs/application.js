@@ -3,12 +3,12 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
-import Rails from "@rails/ujs"
-import Turbolinks from "turbolinks"
-import * as ActiveStorage from "@rails/activestorage"
-import "channels"
-import React from "react"
-import ReactDOM from "react-dom"
+import Rails from '@rails/ujs'
+import Turbolinks from 'turbolinks'
+import * as ActiveStorage from '@rails/activestorage'
+import 'channels'
+import React from 'react'
+import ReactDOM from 'react-dom'
 import SignupApp from 'containers/SignupApp'
 
 Rails.start()
@@ -17,8 +17,5 @@ ActiveStorage.start()
 
 window.startApp = () => {
   const MOUNT_NODE = document.getElementById('app')
-  ReactDOM.render(
-    React.createElement(SignupApp, {}, null),
-    MOUNT_NODE
-  )
+  ReactDOM.render(React.createElement(SignupApp, {}, null), MOUNT_NODE)
 }
