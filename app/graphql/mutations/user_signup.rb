@@ -1,4 +1,4 @@
-class Mutations::MyFormSubmit < Mutations::BaseMutation
+class Mutations::UserSignup < Mutations::BaseMutation
   argument :name, String, required: true
   argument :email, String, required: true
   argument :password, String, required: true
@@ -7,13 +7,11 @@ class Mutations::MyFormSubmit < Mutations::BaseMutation
   field :user, Types::UserType, null: true
 
   def call(name:, email:, password:, password_confirmation:)
-    if password != password_confirmation
-      raise FormError, { password_confirmation: "Passwords must match" }
-    end
     user = User.create!(
       name: name,
       email: email,
-      password: password
+      password: password,
+      password_confirmation: password_confirmation
     )
     {
       user: user

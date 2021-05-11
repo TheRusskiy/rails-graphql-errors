@@ -1,5 +1,5 @@
 module Types
   class MutationType < Types::BaseObject
-    field :my_form_submit, mutation: Mutations::MyFormSubmit
+    field :user_signup, mutation: Mutations::UserSignup
   end
 end
