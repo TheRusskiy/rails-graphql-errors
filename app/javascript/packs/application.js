@@ -7,7 +7,18 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+import React from "react"
+import ReactDOM from "react-dom"
+import SignupApp from 'containers/SignupApp'
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+window.startApp = () => {
+  const MOUNT_NODE = document.getElementById('app')
+  ReactDOM.render(
+    React.createElement(SignupApp, {}, null),
+    MOUNT_NODE
+  )
+}
